@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-11-15T02:19:46.717Z",
+    "end": "2023-11-15T02:19:48.151Z",
+    "duration": 1434,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "500b5672-d128-4d8f-b08c-2bc2f4061416",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/16-staticTables.cy.js",
+      "file": "cypress/e2e/integration/16-staticTables.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c2d9b1da-67b5-4b44-9167-f263f412dfa3",
+          "title": "Static Tables",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Verify the headers of the table",
+              "fullTitle": "Static Tables Verify the headers of the table",
+              "timedOut": null,
+              "duration": 1405,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/16-staticTables.cy.js/Static Tables -- Verify the headers of the table (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Tables').click();\ntablesPage.getCompanyTableHeaders().find('th').first().should('have.text', 'Rank').next().should('have.text', 'Company').next().should('have.text', 'Employees').next().should('have.text', 'Country');\ntablesPage.getCompanyTableHeaders().find('th').each(($el, index) => {\n  cy.wrap($el).should('have.text', this.headers[index]);\n});",
+              "err": {
+                "message": "TypeError: Cannot read properties of undefined (reading '0')",
+                "estack": "TypeError: Cannot read properties of undefined (reading '0')\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/16-staticTables.cy.js:37:58)",
+                "diff": null
+              },
+              "uuid": "b715f09b-eb59-444b-87c5-18e82146b774",
+              "parentUUID": "c2d9b1da-67b5-4b44-9167-f263f412dfa3",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "b715f09b-eb59-444b-87c5-18e82146b774"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1405,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

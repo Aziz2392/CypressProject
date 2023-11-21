@@ -1,0 +1,155 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 0,
+    "pending": 0,
+    "failures": 3,
+    "start": "2023-11-15T02:18:55.403Z",
+    "end": "2023-11-15T02:18:57.099Z",
+    "duration": 1696,
+    "testsRegistered": 3,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "883ece18-5526-4f4e-b80a-fcdc1ae84bde",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/08-alerts.cy.js",
+      "file": "cypress/e2e/integration/08-alerts.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "f6bebaeb-aafa-42d6-8359-a7d7b60bb442",
+          "title": "Alerts",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Handling the Warning Alerts",
+              "fullTitle": "Alerts Handling the Warning Alerts",
+              "timedOut": null,
+              "duration": 740,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/08-alerts.cy.js/Alerts -- Handling the Warning Alerts (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.clickCard(\"Alerts\");\ncy.on(\"window:alert\", str => {\n  console.log(\"My warning alert text content is :\" + str);\n  expect(str).to.equal('You are on TechGlobal Training application.');\n});\ncy.get(\"#warning_alert\").click();\ncy.get('#action').should('have.text', 'You accepted warning by clicking OK.');",
+              "err": {
+                "message": "TypeError: cy.clickCard is not a function",
+                "estack": "TypeError: cy.clickCard is not a function\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/08-alerts.cy.js:17:9)",
+                "diff": null
+              },
+              "uuid": "9e67e903-6f12-4048-ac5c-df549a4b6911",
+              "parentUUID": "f6bebaeb-aafa-42d6-8359-a7d7b60bb442",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Handling the Confirmation Alert",
+              "fullTitle": "Alerts Handling the Confirmation Alert",
+              "timedOut": null,
+              "duration": 450,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/08-alerts.cy.js/Alerts -- Handling the Confirmation Alert (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.clickCard(\"Alerts\");\ncy.get(\"#confirmation_alert\").click();\ncy.once('window:confirm', str => {\n  console.log(str);\n  expect(str).to.equal('Would you like to stay on TechGlobal Training application?');\n  return false;\n});\ncy.get('#action').should('have.text', 'You rejected the alert by clicking Cancel.');\ncy.get(\"#confirmation_alert\").click();\ncy.get('#action').should('have.text', 'You confirmed the alert by clicking OK.');",
+              "err": {
+                "message": "TypeError: cy.clickCard is not a function",
+                "estack": "TypeError: cy.clickCard is not a function\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/08-alerts.cy.js:45:9)",
+                "diff": null
+              },
+              "uuid": "7e00eeb2-d0ba-4f1b-acf9-e947ef39ed0b",
+              "parentUUID": "f6bebaeb-aafa-42d6-8359-a7d7b60bb442",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Handling alerts - Prompt alert",
+              "fullTitle": "Alerts Handling alerts - Prompt alert",
+              "timedOut": null,
+              "duration": 426,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/08-alerts.cy.js/Alerts -- Handling alerts - Prompt alert (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.clickCard(\"Alerts\");\n// Clicking the \"Cancel\" in prompt Alert\n// cy.window().then((win) => {\n//   cy.stub(win, 'prompt').returns(null)\n// })\n//Another way of Clicking the \"Cancel\" in prompt Alert\n// cy.window().then((win) => {\n//   cy.stub(win, 'prompt')\n//   return false\n// })\n// Clicking the \"Okay\" by entering text in prompt Alert\n// cy.window().then((win) => {\n//   cy.stub(win, 'prompt').returns('TechGlobal my Text here')\n// })\ncy.window().then(win => {\n  cy.stub(win, 'prompt').callsFake(message => {\n    console.log(message);\n    return message;\n  });\n});\ncy.get('#prompt_alert').click();",
+              "err": {
+                "message": "TypeError: cy.clickCard is not a function",
+                "estack": "TypeError: cy.clickCard is not a function\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/08-alerts.cy.js:69:9)",
+                "diff": null
+              },
+              "uuid": "385ff3f2-1ee1-4502-87ef-3a29b674cb57",
+              "parentUUID": "f6bebaeb-aafa-42d6-8359-a7d7b60bb442",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "9e67e903-6f12-4048-ac5c-df549a4b6911",
+            "7e00eeb2-d0ba-4f1b-acf9-e947ef39ed0b",
+            "385ff3f2-1ee1-4502-87ef-3a29b674cb57"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 1616,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

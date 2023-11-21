@@ -1,0 +1,90 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-11-15T02:20:08.230Z",
+    "end": "2023-11-15T02:20:15.400Z",
+    "duration": 7170,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8bc0b51b-68ae-46a7-b719-e5e1ebd26ef0",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/assertionsPractices.cy.js",
+      "file": "cypress/e2e/integration/assertionsPractices.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "More explicit assertions - Validate Multiple elements",
+          "fullTitle": "More explicit assertions - Validate Multiple elements",
+          "timedOut": null,
+          "duration": 7131,
+          "state": "failed",
+          "speed": null,
+          "pass": false,
+          "fail": true,
+          "pending": false,
+          "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/assertionsPractices.cy.js/More explicit assertions - Validate Multiple elements (failed).png\"\n    ]\n  ]\n}",
+          "code": "cy.visit('https://techglobal-training.com/frontend');\n//cy.clickCard('Html Elements')\n// If we want to validate multiple web elements, normally we would do this.\ncy.get('#hello_paragraph').should('be.visible').and('have.text', 'Hello World!');\ncy.get('#testing_paragraph').should('be.visible').and('have.text', 'I like automation testing!');\n// Or, we can locate the above elements in a single locator that we need to validate\ncy.contains('Paragraphs').nextAll().as('paragraphHeader');\n// By indexing, we can validate these elements using eq(), first() or last()\ncy.get('@paragraphHeader').first().should('have.text', 'Hello World!');\ncy.get('@paragraphHeader').last().should('have.text', 'I like automation testing!');\ncy.get('@paragraphHeader').first().should(\"have.text\", \"Hello World!\").next().should(\"have.text\", \"I like automation testing!\");\nconst arr = ['Hello World!', 'I like automation testing!'];\n// And we can loop through using fori loop by their index - NOT A PREFERRED WAY\nfor (let i = 0; i < arr.length; i++) {\n  cy.get('@paragraphHeader').eq(i).should(\"have.text\", arr[i]);\n}\n// We can assert these using each() and validate using explicit assertion\ncy.get('@paragraphHeader').each(($el, index) => {\n  cy.log($el.text());\n  expect($el.text()).to.equal(arr[index]);\n});",
+          "err": {
+            "message": "AssertionError: Timed out retrying after 6000ms: Expected to find element: `#hello_paragraph`, but never found it.",
+            "estack": "AssertionError: Timed out retrying after 6000ms: Expected to find element: `#hello_paragraph`, but never found it.\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/assertionsPractices.cy.js:159:31)",
+            "diff": null
+          },
+          "uuid": "db3bf7e7-490a-43ca-a9d8-3e18c8ab885e",
+          "parentUUID": "8bc0b51b-68ae-46a7-b719-e5e1ebd26ef0",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [],
+      "failures": [
+        "db3bf7e7-490a-43ca-a9d8-3e18c8ab885e"
+      ],
+      "pending": [],
+      "skipped": [],
+      "duration": 7131,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2023-11-15T02:19:49.117Z",
+    "end": "2023-11-15T02:19:56.593Z",
+    "duration": 7476,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "000c81cd-ed8e-4fb4-a505-f3e4941c1fbf",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/assertionsPractice2.cy.js",
+      "file": "cypress/e2e/integration/assertionsPractice2.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bc956e7d-b031-402c-970a-f024e4660b63",
+          "title": "Cypress Assertions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Default Assertions",
+              "fullTitle": "Cypress Assertions Default Assertions",
+              "timedOut": null,
+              "duration": 7413,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": "{\n  \"title\": \"cypress-mochawesome-reporter-screenshots\",\n  \"value\": [\n    [\n      \"/assertionsPractice2.cy.js/Cypress Assertions -- Default Assertions (failed).png\"\n    ]\n  ]\n}",
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\n// cy.contains('Checkboxes').nextAll().as('checkboxElements')\nconst checkboxText = ['Apple', 'Microsoft', 'Tesla'];\nconst radioButtonText = ['Java', 'JavaScript', 'C#'];\ncy.get('#checkbox-button-group > div').each(($el, index) => {\n  cy.wrap($el).find('label').should('have.text', checkboxText[index]);\n  cy.wrap($el).find('input').should('be.visible').and('be.enabled');\n  cy.get('#radio-button-group > div').each(($el, index) => {\n    cy.wrap($el).find('label').should('have.text', radioButtonText[index]);\n    cy.wrap($el).find('label > input').should('be.visible').and('be.enabled');\n  });\n});\n//cy.get('@checkboxElements').each(($el, index) => {\n//expect($el.text()).to.equal(checkboxText[index])\n//  expect($el).to.be.visible",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 6000ms: expected '<label#c#_radio.radio>' to have text 'C#', but the text was ''",
+                "estack": "AssertionError: Timed out retrying after 6000ms: expected '<label#c#_radio.radio>' to have text 'C#', but the text was ''\n    at Context.eval (webpack://cypressproject/./cypress/e2e/integration/assertionsPractice2.cy.js:26:43)",
+                "diff": "+ 'C#'\n"
+              },
+              "uuid": "0a896d95-c21b-4448-a871-5890ab75b74b",
+              "parentUUID": "bc956e7d-b031-402c-970a-f024e4660b63",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "0a896d95-c21b-4448-a871-5890ab75b74b"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 7413,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

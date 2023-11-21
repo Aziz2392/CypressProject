@@ -1,0 +1,143 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-15T02:18:58.049Z",
+    "end": "2023-11-15T02:19:01.345Z",
+    "duration": 3296,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "1913946f-5708-454b-82de-310280ea618a",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/09-advancedActions.cy.js",
+      "file": "cypress/e2e/integration/09-advancedActions.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "84b60e14-a6f1-4994-aa25-44d1b9558df5",
+          "title": "Keyboard & Mouse Actions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Keyboard Actions",
+              "fullTitle": "Keyboard & Mouse Actions Keyboard Actions",
+              "timedOut": null,
+              "duration": 1352,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.get('.cards').contains('Html Elements').click();\n// cy.get('#dropdown-button').trigger('mouseover')\n// cy.get('#dropdown-button').realHover()\ncy.get(\"#text_input1\").realClick().realPress(\"A\").realPress(\"Tab\").realPress(\"KeyB\").realPress(\"ArrowLeft\").realPress(\"R\").realPress(\"ArrowRight\").realPress(\"Backspace\");",
+              "err": {},
+              "uuid": "33dcd440-5a87-4025-bbaf-4d91536e7e6e",
+              "parentUUID": "84b60e14-a6f1-4994-aa25-44d1b9558df5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Click, Right Click, and Double Click",
+              "fullTitle": "Keyboard & Mouse Actions Click, Right Click, and Double Click",
+              "timedOut": null,
+              "duration": 1003,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.get('.cards').contains('Actions').click();\ncy.url().should('contain', 'actions');\ncy.get('button[id*=\"click\"]').as('buttons');\ncy.get('@buttons').first().should('have.text', 'Click on me').click().next().should('have.text', 'You clicked on a button!');\ncy.get('@buttons').eq(1).should('have.text', 'Right-Click on me').rightclick().next().should('have.text', 'You right-clicked on a button!');\ncy.get('@buttons').last().should('have.text', 'Double-Click on me').dblclick().next().should('have.text', 'You double-clicked on a button!');",
+              "err": {},
+              "uuid": "dcd364f3-0c19-4bd5-8f17-6d386f7a0425",
+              "parentUUID": "84b60e14-a6f1-4994-aa25-44d1b9558df5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Drag and Drop",
+              "fullTitle": "Keyboard & Mouse Actions Drag and Drop",
+              "timedOut": null,
+              "duration": 864,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit(\"https://techglobal-training.com/frontend\");\ncy.get('.cards').contains('Actions').click();\nconst arr = ['Drag Me', 'Drop Here'];\ncy.get('button[id*=\"dr\"]').each((el, index) => {\n  cy.wrap(el).should('have.text', arr[index]);\n});\ncy.get('button[id*=\"dr\"]:first-child').drag('button[id*=\"dr\"]:last-child');\ncy.get('button[id*=\"dr\"]:last-child').should('have.attr', 'id', 'drag_element');\ncy.get('#drag_and_drop_result').should('have.text', 'An element dropped here!');",
+              "err": {},
+              "uuid": "798a19d5-50d7-483d-80d2-fe7dfecfc8af",
+              "parentUUID": "84b60e14-a6f1-4994-aa25-44d1b9558df5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "33dcd440-5a87-4025-bbaf-4d91536e7e6e",
+            "dcd364f3-0c19-4bd5-8f17-6d386f7a0425",
+            "798a19d5-50d7-483d-80d2-fe7dfecfc8af"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 3219,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

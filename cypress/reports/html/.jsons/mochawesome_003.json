@@ -1,0 +1,181 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-15T02:18:40.060Z",
+    "end": "2023-11-15T02:18:45.947Z",
+    "duration": 5887,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8bce1978-e0e5-4759-816b-7cdd46304b4b",
+      "title": "",
+      "fullFile": "cypress/e2e/integration/04-basicCommands.cy.js",
+      "file": "cypress/e2e/integration/04-basicCommands.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9fab3955-314f-4cce-af1b-44abde5f6640",
+          "title": "Cypress actions",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Click Action",
+              "fullTitle": "Cypress actions Click Action",
+              "timedOut": null,
+              "duration": 1289,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\n// cy.get(\"#register_button\").click()\n// cy.get('.mt-1').should('have.text', 'You clicked on “Register”')\n// cy.get(\"#signin_button\").click()\n// cy.get('.mt-1').should('have.text', 'You clicked on “Sign in”')\ncy.get('#register_button').click().next().next().should('have.text', 'You clicked on “Register”').prev().click().next().should('have.text', 'You clicked on “Sign in”');",
+              "err": {},
+              "uuid": "ce2633dc-8d3e-4536-bbc3-4ccd4bab6947",
+              "parentUUID": "9fab3955-314f-4cce-af1b-44abde5f6640",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Checkbox & Radio buttons",
+              "fullTitle": "Cypress actions Checkbox & Radio buttons",
+              "timedOut": null,
+              "duration": 971,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\n// This assertion will not work, because \"#apple_check\" targets <label> web element\n// and this element is not the input itself, and its not possible to get input information from it.\n// cy.get('#apple_check').click().should('be.checked')\n// NOTE: THIS WILL NOT WORK!\n/**\n * cy.check() can only be called on :checkbox and :radio. \n * OUR subject is a: <label id=\"apple_check\" class=\"checkbox\">...</label>\n */\n// cy.get('#apple_check').check()\n/**\n * 1. Check on the Apple checkbox button\n * 2. Then Validate its checked\n * 3. Uncheck the Apple checkbox button\n * 4. Validate its unchecked.\n */\ncy.get('#checkbox_1').check().should('be.checked').uncheck().should('not.be.checked');\n/**\n * 1. Locate the \"Java\" radio button, and validate its not checked\n * 2. Select Java radio button\n * 3. Validate it's checked\n */\ncy.get('#radio_1_option_1').should('not.be.checked').check().should('be.checked');",
+              "err": {},
+              "uuid": "a7434cf4-33eb-4c2d-a5d2-a246124d5663",
+              "parentUUID": "9fab3955-314f-4cce-af1b-44abde5f6640",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Text input",
+              "fullTitle": "Cypress actions Text input",
+              "timedOut": null,
+              "duration": 1133,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\n// .type('TechGlobal')\n// .clear()\n/**\n * 1. Locate the text inputs, and send text inside, and clear it.\n */\ncy.get('#text_input1').type('Hi').clear();\ncy.get('#text_input2').type('Hi').clear();",
+              "err": {},
+              "uuid": "feadf98e-f468-40e4-b70d-7289c3384f64",
+              "parentUUID": "9fab3955-314f-4cce-af1b-44abde5f6640",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Calender input",
+              "fullTitle": "Cypress actions Calender input",
+              "timedOut": null,
+              "duration": 1375,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\ncy.get(\"#date_input1\").type(\"11/11/1990{enter}\");\ncy.get(\"#date_input2\").clear().type(\"02/20/1987{esc}\");",
+              "err": {},
+              "uuid": "5bb33b87-0edc-4915-b6b5-afc9ef4482bc",
+              "parentUUID": "9fab3955-314f-4cce-af1b-44abde5f6640",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Dropdown input",
+              "fullTitle": "Cypress actions Dropdown input",
+              "timedOut": null,
+              "duration": 984,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://techglobal-training.com/frontend');\ncy.get('.cards').contains('Html Elements').click();\ncy.get('#company_dropdown1').select('Microsoft');\ncy.get('#company_dropdown2').select('Tesla');",
+              "err": {},
+              "uuid": "46197154-4322-4764-9f52-f807b82b3252",
+              "parentUUID": "9fab3955-314f-4cce-af1b-44abde5f6640",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "ce2633dc-8d3e-4536-bbc3-4ccd4bab6947",
+            "a7434cf4-33eb-4c2d-a5d2-a246124d5663",
+            "feadf98e-f468-40e4-b70d-7289c3384f64",
+            "5bb33b87-0edc-4915-b6b5-afc9ef4482bc",
+            "46197154-4322-4764-9f52-f807b82b3252"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 5752,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "reportDir": "cypress/reports/html/.jsons"
+      },
+      "version": "6.2.0"
+    }
+  }
+}

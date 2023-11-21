@@ -30,12 +30,6 @@ describe('Cypress Assertions', () => {
             )
 
 
-
-
-
-
-
-
         }
 
         )
