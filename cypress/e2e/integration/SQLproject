@@ -1,0 +1,375 @@
+// 1
+SELECT EMPLOYEE_ID, FIRST_NAME, LAST_NAME FROM EMPLOYEES
+WHERE SALARY > (SELECT AVG(SALARY) FROM EMPLOYEES)
+
+//2
+
+select e.first_name, e.last_name, e.department_id, e.manager_id
+from employees e
+join employees m
+on e.manager_id = m.employee_id
+Where e.manager_id = 122
+
+// 3
+
+select e.department_id, e.first_name, e.last_name, e.job_id, d.department_name
+from employees e
+join departments d
+on e.department_id = d.department_id
+where d.department_id = 100
+
+// 4
+
+select * 
+from employees
+where salary <= 2500
+
+//5
+
+select e.first_name, e.last_name, d.department_name, l.city, l.state_province
+from employees e
+join departments d
+on e.department_id = d.department_id
+join locations l
+on d.location_id = l.location_id
+
+//6
+
+select e.first_name, e.last_name, d.department_name, e.department_id
+from employees e
+join departments d
+on e.department_id = d.department_id
+where e.department_id = 80
+or e.department_id = 40
+
+// 7 (INCOMPLETE)
+
+select e.first_name, e.last_name, e.department_id, e.manager_id
+from employees e
+join employees m
+on e.manager_id = m.employee_id
+where e.manager_id = 147
+
+select e.first_name, e.last_name, e.department_id, e.manager_id
+from employees e
+join employees m
+on e.manager_id = m.employee_id
+Where e.manager_id = 147
+
+// 8 (need assistance)
+
+select e.employee_id, e.first_name, e.last_name, e.salary
+from employees e
+join departments d
+on e.department_id = d.department_id
+where e.salary > (select avg(salary) from employees)
+and
+
+
+// 9 
+
+select e.first_name, e.last_name, d.department_name, l.city, l.state_province
+from employees e
+join departments d
+on e.department_id = d.department_id
+join locations l
+on d.location_id = l.location_id
+where e.first_name like '%z%'
+
+
+// 10 (clarify question)
+
+select first_name, last_name, department_id
+from employees 
+Union
+select department_name
+from departments 
+
+
+// 11 (include or not include MK_MAN)
+
+select e.employee_id, e.first_name, e.last_name, e.job_id , j.job_title
+from employees e
+join jobs j
+on e.job_id = j.job_id
+where salary < (select max(salary) from employees where job_id = 'MK_MAN')
+// and e.job_id not like 'MK_MAN'
+
+
+// 12
+
+select e.employee_id, e.first_name, e.last_name, e.job_id , j.job_title
+from employees e
+join jobs j
+on e.job_id = j.job_id
+where salary > (select max(salary) from employees where job_id = 'PU_MAN')
+and e.job_id not like 'PU_MAN'
+
+// 13
+
+
+select e.employee_id, e.first_name, e.last_name, j.job_title 
+from employees e
+join jobs j
+on e.job_id = j.job_id
+where e.salary > (select Avg(e.salary), d.department_name from employees e
+join departments d
+on e.department_id = d.department_id
+group by e.department_id, d.department_name)
+
+
+select Avg(e.salary), d.department_name from employees e
+join departments d
+on e.department_id = d.department_id
+group by e.department_id, d.department_name
+
+// 14
+
+select sum(e.salary), d.department_id 
+from employees e
+join departments d
+on e.department_id = d.department_id
+group by d.department_id
+having count(*) >= 1
+
+// 15
+
+select first_name, last_name, salary
+from employees
+where salary < (select salary 
+from employees
+where employee_id = 182)
+
+// 16
+
+select m.first_name as manager_name, e.first_name as emp_name
+from employees e
+inner join employees m
+on e.manager_id = m.employee_id
+
+// 17
+
+select d.department_name, l.city, l.state_province
+from departments d
+join locations l
+on d.location_id = l.location_id
+
+// 18
+
+
+select * from employees
+where salary > (select avg(salary) from employees)
+and department_id = 60 
+or department_id = 210
+or department_id = 230
+
+
+
+// 19
+
+select e.first_name, e.last_name, e.department_id, d.department_name from employees e
+left join departments d 
+on e.department_id = d.department_id 
+
+// 20
+
+select m.first_name as manager_name, e.first_name as emp_name
+from employees e
+inner join employees m
+on e.manager_id = m.employee_id
+
+// 21
+
+select first_name, last_name, salary from employees
+where salary > (select salary from employees where employee_id = 163)
+
+// 22
+
+select first_name, last_name, salary, department_id, job_id from employees
+where job_id = (select job_id from employees where employee_id = 169)
+
+// 23
+
+select first_name, last_name, salary, department_id, job_id from employees
+where department_id = 80 or department_id = 50;
+
+(select department_id from employees where last_name = 'Taylor')
+
+// 24
+
+select e.first_name, e.last_name, d.department_name, e.job_id  from employees e
+join departments d
+on e.department_id = d.department_id
+where e.job_id like '%MAN'
+and e.first_name is not null
+
+// 25
+
+select e.employee_id, j.start_date, j.end_date, e.job_id, e.department_id from employees e
+join job_history j
+on e.employee_id = j.employee_id
+where e.salary >= 12000
+
+
+// 26 (I dont understand question)
+
+select first_name, salary, department_id from employees 
+
+// 27
+
+select * from employees
+where salary = 3000
+and manager_id = 121 
+
+// 28
+
+select e.first_name, e.last_name, e.employee_id, j.job_title
+from employees e  join departments d
+on e.department_id = d.department_id
+join jobs j
+on e.job_id = j.job_id
+where d.location_id = 1700
+
+// 29
+
+select first_name || ' ' || last_name as full_name from employees
+where salary > 3700
+
+// 30
+
+select * from employees 
+where salary > (select salary from employees where last_name like 'Russell')
+
+// 31
+
+select first_name || ' ' || last_name as full_name from employees
+where manager_id is null
+
+// 32
+
+select d.department_name, count(e.employee_id) as num_of_emp from departments d
+right join employees e
+on d.department_id = e.department_id
+where d.department_name is not null 
+group by d.department_id , d.department_name
+
+// 33
+
+select e.last_name, e.employee_id, l.city
+from employees e  join departments d
+on e.department_id = d.department_id
+join locations l
+on d.location_id = l.location_id
+
+// 34
+
+select e.job_id, avg(e.salary) from employees e
+group by e.job_id 
+
+// 35
+
+select e.first_name || ' ' || e.last_name as full_name, d.department_name, l.city 
+from employees e
+join departments d
+on e.department_id = d.department_id
+join locations l
+on d.location_id = l.location_id
+
+// 36
+
+select e.first_name || ' ' || e.last_name as full_name 
+from employees e
+where department_id is null 
+
+// 37
+
+select d.department_name, count(e.employee_id) from employees e
+right join departments d
+on e.department_id = d.department_id 
+group by d.department_name
+
+// 38
+
+select e.first_name || ' ' || e.last_name as full_name, d.department_name from employees e
+join departments d
+on e.department_id = d.department_id 
+where e.salary > 10000
+
+// 39
+
+select d.department_name, avg(e.salary) from employees e
+right join departments d
+on e.department_id = d.department_id 
+group by d.department_name
+
+
+// 40
+
+select e.first_name || ' ' || e.last_name as full_name, d.department_id from employees e
+join departments d
+on e.department_id = d.department_id
+where d.department_name like 'IT'
+
+// 41 (working on this one)
+
+select e.first_name || ' ' || e.last_name as full_name from employees e
+join departments d
+on e.department_id = d.department_id
+where e.salary > (select d.department_name, sum(e.salary)/2 from employees e
+right join departments d
+on e.department_id = d.department_id 
+group by d.department_name)
+
+//42
+
+select first_name from employees
+where job_id like '%MAN'
+and first_name is not null 
+
+// 43
+
+select d.department_name, l.postal_code, d.location_id from departments d
+join locations l
+on d.location_id = l.location_id
+where l.city = 'London'
+
+// 44
+
+select e.first_name || ' ' || e.last_name as full_name, e.salary, e.department_id from employees e
+where e.salary > (select avg(salary) from employees)
+order by e.salary desc 
+
+// 45
+
+select e.first_name || ' ' || e.last_name as full_name, e.salary, e.department_id from employees e
+where salary > (select max(salary) from employees where department_id = 40)
+
+// 46 (I dont get the question)
+
+// 47 (No departments managed by Susan)
+
+select * from employees
+where first_name = 'Susan'
+
+// 48
+
+select d.department_name, l.city from departments d
+join locations l
+on d.location_id = l.location_id
+where l.country_id like 'US'
+
+// 49
+
+select e.first_name || ' ' || e.last_name as full_name, d.department_name from employees e
+join departments d
+on e.department_id = d.department_id
+where e.last_name like 'S%'
+
+// 50
+
+select d.department_name, count(e.employee_id)  from employees e
+right join departments d
+on e.department_id = d.department_id 
+group by d.department_name
+order by count(e.employee_id) desc 
+
